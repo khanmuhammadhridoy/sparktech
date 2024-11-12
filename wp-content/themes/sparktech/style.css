@@ -1,11 +1,9 @@
 /*
-Theme Name: SparkTech
-Theme URI: https://example.com/sparktech
-Author: Your Name
-Author URI: https://example.com
+Theme Name: SparkTech Theme
+Theme URI: #
+Author: SparkTech
+Author URI: #
 Description: SparkTech is a custom WordPress theme designed to amplify creativity, impact, and brand experience. It's flexible, versatile, and customizable for businesses, portfolios, and more. With design tools and easy color and typography adjustments, SparkTech helps speed up the site-building process.
-Requires at least: 6.4
-Tested up to: 6.6
 Requires PHP: 7.0
 Version: 1.0
 License: GNU General Public License v2 or later
@@ -13,3 +11,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sparktech
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, business, creative
 */
+body {
+  color: red;
+}
