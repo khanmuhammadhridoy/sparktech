@@ -1,4 +1,3 @@
 # sparktech
 
 
-db name : sparktech
