@@ -25,28 +25,32 @@ function sparktech_enqueue_styles()
     wp_enqueue_style('slick');
     wp_enqueue_style('sparktech_custom_style');
 
-
+    // Enqueue the main stylesheet for the theme
     wp_enqueue_style('sparktech_global_style', get_stylesheet_uri());
-    // Dynamically output global colors and fonts from Elementor
-    $global_colors = get_option('elementor_global_settings')['global_colors'];
-    $global_fonts = get_option('elementor_global_settings')['global_fonts'];
-    // Output custom CSS with global settings
-    $custom_css = ':root {';
-    // Add global colors
-    if (isset($global_colors)) {
+
+    // Check if Elementor is active and global settings are available
+    if (class_exists('Elementor\Plugin') && $global_settings = get_option('elementor_global_settings')) {
+        // Retrieve global colors and fonts from Elementor settings, if available
+        $global_colors = $global_settings['global_colors'] ?? [];
+        $global_fonts = $global_settings['global_fonts'] ?? [];
+
+        // Start custom CSS variable declarations within the :root selector
+        $custom_css = ':root {';
+
+        // Loop through global add CSS variables
         foreach ($global_colors as $color_name => $color_value) {
             $custom_css .= "--{$color_name}: {$color_value};";
         }
-    }
-    // Add global fonts
-    if (isset($global_fonts)) {
         foreach ($global_fonts as $font_name => $font_value) {
             $custom_css .= "--{$font_name}: {$font_value};";
         }
+
+        // Close the CSS block
+        $custom_css .= '}';
+
+        // Add the custom CSS inline with the main stylesheet
+        wp_add_inline_style('sparktech_global_style', $custom_css);
     }
-    $custom_css .= '}';
-    // Output the custom CSS to the front-end
-    wp_add_inline_style('sparktech_global_style', $custom_css);
 
 
     // Enqueue the main stylesheet (style.css in the theme root folder)
@@ -117,3 +121,12 @@ function sparktech_customize_register($wp_customize)
     ]));
 }
 add_action('customize_register', 'sparktech_customize_register');
+
+// Function to register custom menu locations
+function sparktech_register_menus()
+{
+    register_nav_menus([
+        'primary-menu' => __('Primary Menu', 'sparktech'), // Assigns 'Primary Menu' as the label, with 'sparktech' as the text domain
+    ]);
+}
+add_action('init', 'sparktech_register_menus');
