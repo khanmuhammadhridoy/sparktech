@@ -22,13 +22,21 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-area">
-                            <a class="dark-version" href=""> <img
-                                    src="<?php echo get_template_directory_uri(); ?> /assets/images/logo.png"
-                                    alt="logo"></a>
-                            <a class="light-version" href=""> <img
-                                    src="<?php echo get_template_directory_uri(); ?> /assets/images/logo-black.png"
-                                    alt="logo"></a>
+                            <?php
+                            if (has_custom_logo()):
+                                // Display the custom logo
+                                the_custom_logo();
+                            else:
+                                // Fallback to a default logo if none is set
+                                ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>"
+                                        alt="Logo">
+                                </a>
+                            <?php endif; ?>
                         </div>
+
+
                     </div>
                     <div class="col-lg-8 d-none d-lg-block">
                         <nav id="mobile-menu">

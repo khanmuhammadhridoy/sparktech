@@ -3,8 +3,7 @@
 // Enable support for the document title tag
 add_theme_support('title-tag');
 
-
-function sparktech_enqueue()
+function sparktech_enqueue_styles()
 {
     // Register stylesheet
     wp_register_style('animate', get_template_directory_uri() . '/assets/css/animate.css');
@@ -26,12 +25,13 @@ function sparktech_enqueue()
     wp_enqueue_style('slick');
     wp_enqueue_style('sparktech-custom-style');
 
-
     // Enqueue the main stylesheet (style.css in the theme root folder)
     wp_enqueue_style('sparktech-style', get_stylesheet_uri());
+}
+add_action('wp_enqueue_scripts', 'sparktech_enqueue_styles');
 
-
-
+function sparktech_enqueue_js()
+{
     // Register JavaScript
     wp_register_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', ['jquery-2.2.4'], '5.0.2', true);
     wp_register_script('counterup', get_template_directory_uri() . '/assets/js/counterup.min.js', ['jquery-2.2.4'], '1.0', true);
@@ -68,4 +68,28 @@ function sparktech_enqueue()
     wp_enqueue_script('jquery-2.2.4');
     wp_enqueue_script('main');
 }
-add_action('wp_enqueue_scripts', 'sparktech_enqueue');
+add_action('wp_enqueue_scripts', 'sparktech_enqueue_js');
+
+// Theme Function 
+// Register Customizer Options for Logo Upload
+function sparktech_customize_register($wp_customize)
+{
+    // Add a section for the header area in the Customizer
+    $wp_customize->add_section('sparktech_header_area', [
+        'title' => __('Header Area', 'sparktech'),
+        'description' => 'Customize the header here',
+    ]);
+
+    // Add a setting for the custom logo
+    $wp_customize->add_setting('sparktech_logo', [
+        'default' => get_template_directory_uri() . '/assets/images/logo.png', // Default logo URL
+    ]);
+
+    // Add a control for the logo upload using the image control
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'sparktech_logo', [
+        'label' => __('Logo Upload', 'sparktech'),
+        'settings' => 'sparktech_logo',
+        'section' => 'sparktech_header_area',
+    ]));
+}
+add_action('customize_register', 'sparktech_customize_register');
