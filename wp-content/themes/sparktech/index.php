@@ -15,7 +15,7 @@ if (have_posts()):
 endif;
 ?>
 
-<?php get_template_part('hero'); ?>
+<?php get_template_part('hero',''); ?>
 
 <h1>outsite</h1>
 
