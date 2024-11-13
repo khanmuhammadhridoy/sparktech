@@ -20,16 +20,16 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'sparktech' );
+define( 'DB_NAME', 'u693732437_bPmGl' );
 
 /** Database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'u693732437_ekAMU' );
 
 /** Database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'Admin55@@66@@' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', '82.197.82.57' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
