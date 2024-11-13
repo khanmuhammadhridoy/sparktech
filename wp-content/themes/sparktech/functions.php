@@ -13,7 +13,7 @@ function sparktech_enqueue_styles()
     wp_register_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css');
     wp_register_style('meanmenu', get_template_directory_uri() . '/assets/css/meanmenu.css');
     wp_register_style('slick', get_template_directory_uri() . '/assets/css/slick.css');
-    wp_register_style('sparktech-custom-style', get_template_directory_uri() . '/assets/css/style.css');
+    wp_register_style('sparktech_custom_style', get_template_directory_uri() . '/assets/css/style.css');
 
     // Enqueue the stylesheets
     wp_enqueue_style('animate');
@@ -23,7 +23,31 @@ function sparktech_enqueue_styles()
     wp_enqueue_style('magnific-popup');
     wp_enqueue_style('meanmenu');
     wp_enqueue_style('slick');
-    wp_enqueue_style('sparktech-custom-style');
+    wp_enqueue_style('sparktech_custom_style');
+
+
+    wp_enqueue_style('sparktech_global_style', get_stylesheet_uri());
+    // Dynamically output global colors and fonts from Elementor
+    $global_colors = get_option('elementor_global_settings')['global_colors'];
+    $global_fonts = get_option('elementor_global_settings')['global_fonts'];
+    // Output custom CSS with global settings
+    $custom_css = ':root {';
+    // Add global colors
+    if (isset($global_colors)) {
+        foreach ($global_colors as $color_name => $color_value) {
+            $custom_css .= "--{$color_name}: {$color_value};";
+        }
+    }
+    // Add global fonts
+    if (isset($global_fonts)) {
+        foreach ($global_fonts as $font_name => $font_value) {
+            $custom_css .= "--{$font_name}: {$font_value};";
+        }
+    }
+    $custom_css .= '}';
+    // Output the custom CSS to the front-end
+    wp_add_inline_style('sparktech_global_style', $custom_css);
+
 
     // Enqueue the main stylesheet (style.css in the theme root folder)
     wp_enqueue_style('sparktech-style', get_stylesheet_uri());
@@ -70,14 +94,14 @@ function sparktech_enqueue_js()
 }
 add_action('wp_enqueue_scripts', 'sparktech_enqueue_js');
 
-// Theme Function 
+// Theme Function
 // Register Customizer Options for Logo Upload
 function sparktech_customize_register($wp_customize)
 {
     // Add a section for the header area in the Customizer
     $wp_customize->add_section('sparktech_header_area', [
         'title' => __('Header Area', 'sparktech'),
-        'description' => 'Customize the header here',
+        'description' => 'Customize The Header Here',
     ]);
 
     // Add a setting for the custom logo
