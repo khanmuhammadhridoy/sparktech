@@ -3,7 +3,7 @@
 
 <?php get_header() ?>
 
-<div class="content">
+<div>
     content here
 </div>
 
