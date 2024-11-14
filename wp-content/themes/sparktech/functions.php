@@ -11,8 +11,16 @@ include_once("inc/theme_functions/logo.php");
 include_once("inc/theme_functions/header_button.php");
 
 
+// include_once("inc/theme_functions/customizer.php");
+// include_once("inc/theme_functions/sparktech_customize_css.php");
+
+
+
 //menu reg
 include_once("inc/menu_reg.php");
 
 //elementor add
 // include_once("inc/elementor_add.php");
+
+
+
