@@ -1,25 +1,12 @@
 <?php
 ?>
 
-
 <?php get_header(); ?>
 
-<?php
-// If it's the homepage, or any singular page, display Elementor content
-if (have_posts()):
-    while (have_posts()):
-        the_post();
-        // Display Elementor content if available
-        the_content();
-    endwhile;
-endif;
-?>
-
 <div id="scrollsmoother-container">
-
-    <!-- <?php get_template_part('hero'); ?> -->
-    <?php get_template_part('heros'); ?>
-
+    <?php get_template_part('hero'); ?>
 </div>
+
+
 
 <?php get_footer(); ?>
