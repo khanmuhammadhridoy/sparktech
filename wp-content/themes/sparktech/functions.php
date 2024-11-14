@@ -9,6 +9,7 @@ include_once("inc/enqueue.php");
 //theme function
 include_once("inc/theme_functions/logo.php");
 include_once("inc/theme_functions/header_button.php");
+include_once("inc/theme_functions/sparktech_customize_hero.php");
 
 
 // include_once("inc/theme_functions/customizer.php");
