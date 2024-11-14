@@ -25,30 +25,6 @@ function sparktech_enqueue_styles()
     // Enqueue Google Fonts
     wp_enqueue_style('sparktech-google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap', false);
 
-    // Check if Elementor is active and global settings are available
-    if (class_exists('Elementor\Plugin') && $global_settings = get_option('elementor_global_settings')) {
-        // Retrieve global colors and fonts from Elementor settings, if available
-        $global_colors = $global_settings['global_colors'] ?? [];
-        $global_fonts = $global_settings['global_fonts'] ?? [];
-
-        // Start custom CSS variable declarations within the :root selector
-        $custom_css = ':root {';
-
-        // Loop through global add CSS variables
-        foreach ($global_colors as $color_name => $color_value) {
-            $custom_css .= "--{$color_name}: {$color_value};";
-        }
-        foreach ($global_fonts as $font_name => $font_value) {
-            $custom_css .= "--{$font_name}: {$font_value};";
-        }
-
-        // Close the CSS block
-        $custom_css .= '}';
-
-        // Add the custom CSS inline with the main stylesheet
-        wp_add_inline_style('sparktech_global_style', $custom_css);
-    }
-
 
     // Enqueue the main stylesheet (style.css in the theme root folder)
     wp_enqueue_style('sparktech-style', get_stylesheet_uri());

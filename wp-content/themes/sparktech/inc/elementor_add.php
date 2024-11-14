@@ -1,6 +1,8 @@
 <?php
 
 
+
+
 // Render Elementor content on all pages
 function sparktech_render_elementor_content($content)
 {
@@ -26,11 +28,10 @@ add_filter('the_content', 'sparktech_render_elementor_content');
 
 
 
-function sparktech_register_elementor_header_location($elementor_theme_manager)
+// Enable Elementor to recognize theme locations for custom header and footer
+function procus_elementor_support()
 {
-    $elementor_theme_manager->register_location('header', [
-        'label' => __('Header', 'sparktech'),
-        'view' => 'view/header.php',
-    ]);
+    add_theme_support('elementor'); // General support for Elementor
+    add_theme_support('elementor-pro'); // Support for Elementor Pro if used
 }
-add_action('elementor/theme/register_locations', 'sparktech_register_elementor_header_location');
+add_action('after_setup_theme', 'procus_elementor_support');

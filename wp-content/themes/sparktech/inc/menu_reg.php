@@ -7,3 +7,4 @@ function sparktech_register_menus()
     ]);
 }
 add_action('init', 'sparktech_register_menus');
+
