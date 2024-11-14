@@ -2,7 +2,7 @@
 <!-- hero area starts -->
 <section class="hero-area">
     <div class="hero-bg dark-version"
-        style="background-image: url(<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-bg.png'); ?>) !important">
+        style="background-image: url(<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-bg.png'); ?>)">
     </div>
 
     <div class="container">
