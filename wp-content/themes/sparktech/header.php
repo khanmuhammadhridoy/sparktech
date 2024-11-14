@@ -75,8 +75,13 @@ get_template_part('header-elementor'); ?>
                     <!-- CTA button -->
                     <div class="col-lg-2">
                         <div class="nav-right-content">
-                            <a href="contact.html" class="primary-btn">Let’s Talk</a>
+                            <a href="<?php echo esc_url(get_theme_mod('header_button_url', '#')); ?>"
+                                class="primary-btn">
+                                <?php echo esc_html(get_theme_mod('header_button_text', __('Let’s Talk', 'sparktech'))); ?>
+                                <span><i class="ri-arrow-right-up-line"></i></span>
+                            </a>
                         </div>
+
                     </div>
                 </div>
             </div>

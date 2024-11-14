@@ -1,0 +1,344 @@
+# Translation of Themes - Hello Elementor in Bengali (Bangladesh)
+# This file is distributed under the same license as the Themes - Hello Elementor package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-11-02 08:06:37+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: bn_BD\n"
+"Project-Id-Version: Themes - Hello Elementor\n"
+
+#. Theme Name of the theme
+#: style.css
+#, gp-priority: high
+msgid "Hello Elementor"
+msgstr "হ্যালো এলিমেন্টর"
+
+#: includes/settings-functions.php:18 assets/js/hello-admin.js:140
+#: assets/js/hello-admin.js:234
+msgid "Hello Theme Settings"
+msgstr "হ্যালো থিম সেটিংস"
+
+#: includes/settings-functions.php:19
+msgid "Theme Settings"
+msgstr "থিম সেটিংস"
+
+#. translators: %s: Link that opens Elementor's "Site Identity" panel.
+#: includes/settings/settings-footer.php:375
+#: includes/settings/settings-header.php:365
+#: includes/settings/settings-header.php:382
+msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's title"
+msgstr "আপনার সাইটের শিরোনাম পরিচালনা করতে <a href=\"%s\">সাইট আইডেন্টিটি</a> এ যান৷"
+
+#: includes/settings/settings-footer.php:594
+#: includes/settings/settings-header.php:628
+msgid "Upgrade"
+msgstr "আপগ্রেড করুন"
+
+#: header.php:31
+msgid "Skip to content"
+msgstr "সরাসরি লেখায় যান"
+
+#: includes/settings/settings-header.php:638
+msgid "Create Header"
+msgstr "হেডার তৈরি করুন"
+
+#: includes/settings/settings-header.php:546
+msgid "Breakpoint"
+msgstr "ব্রেকপয়েন্ট"
+
+#: includes/settings/settings-header.php:518
+msgid "Dropdown"
+msgstr "ড্রপডাউন"
+
+#: includes/settings/settings-header.php:517
+msgid "Horizontal"
+msgstr "আড়াআড়ি ভাবে"
+
+#: includes/settings/settings-header.php:513
+msgid "Menu Layout"
+msgstr "মেন্যু লেআউট"
+
+#: includes/settings/settings-footer.php:604
+msgid "Create Footer"
+msgstr "ফুটার তৈরি করুন"
+
+#: includes/settings/settings-footer.php:303
+#: includes/settings/settings-header.php:305
+msgid "Title"
+msgstr "শিরোনাম"
+
+#: includes/settings/settings-footer.php:302
+#: includes/settings/settings-header.php:304
+msgid "Logo"
+msgstr "লোগো"
+
+#: includes/settings/settings-footer.php:298
+#: includes/settings/settings-header.php:300
+msgid "Type"
+msgstr "ধরণ"
+
+#: includes/settings/settings-footer.php:275
+#: includes/settings/settings-header.php:270
+msgid "Background"
+msgstr "ব্যাকগ্রাউন্ড"
+
+#: includes/settings/settings-footer.php:223
+#: includes/settings/settings-header.php:208
+msgid "Content Width"
+msgstr "কন্টেন্টের প্রস্থ"
+
+#: includes/settings/settings-footer.php:211
+#: includes/settings/settings-header.php:196
+msgid "Full Width"
+msgstr "পূৰ্ণ প্ৰস্থ"
+
+#: includes/settings/settings-footer.php:210
+#: includes/settings/settings-header.php:195
+msgid "Boxed"
+msgstr "বক্সযুক্ত"
+
+#: includes/settings/settings-footer.php:208
+#: includes/settings/settings-header.php:193
+msgid "Width"
+msgstr "প্রস্থ"
+
+#: includes/settings/settings-footer.php:126
+#: includes/settings/settings-header.php:111
+msgid "Centered"
+msgstr "মাঝামাঝি"
+
+#: includes/settings/settings-footer.php:122
+#: includes/settings/settings-header.php:107
+msgid "Inverted"
+msgstr "উল্টানো"
+
+#: includes/settings/settings-footer.php:130
+#: includes/settings/settings-header.php:115
+msgid "Default"
+msgstr "পূর্বনির্ধারিত"
+
+#: includes/settings/settings-footer.php:119
+#: includes/settings/settings-header.php:104
+msgid "Layout"
+msgstr "লেআউট"
+
+#: includes/settings/settings-footer.php:88
+#: includes/settings/settings-footer.php:516
+msgid "Copyright"
+msgstr "কপিরাইট"
+
+#: includes/settings/settings-footer.php:76
+#: includes/settings/settings-footer.php:444
+#: includes/settings/settings-footer.php:472
+#: includes/settings/settings-header.php:75
+#: includes/settings/settings-header.php:458
+#: includes/settings/settings-header.php:493
+#: template-parts/dynamic-header.php:65
+msgid "Menu"
+msgstr "মেন্যু"
+
+#: functions.php:31 includes/settings/settings-footer.php:44
+msgid "Footer"
+msgstr "ফুটার"
+
+#: functions.php:30 includes/settings/settings-header.php:45
+msgid "Header"
+msgstr "হেডার"
+
+#: includes/settings/settings-footer.php:592
+#: includes/settings/settings-header.php:626
+msgid "Upgrade to Elementor Pro and enjoy free design and many more features"
+msgstr "Elementor Pro-তে আপগ্রেড করুন এবং বিনামূল্যে ডিজাইন এবং আরও অনেক বৈশিষ্ট্য উপভোগ করুন"
+
+#: includes/settings/settings-footer.php:591
+msgid "Create a custom footer with multiple options"
+msgstr "একাধিক বিকল্প সহ একটি কাস্টম ফুটার তৈরি করুন"
+
+#: includes/settings/settings-footer.php:534
+msgid "All rights reserved"
+msgstr "সর্বস্বত্ত্ব সংরক্ষিত।"
+
+#: includes/settings/settings-footer.php:492
+#: includes/settings/settings-header.php:560
+msgid "Color"
+msgstr "রঙ"
+
+#: includes/settings/settings-footer.php:453
+#: includes/settings/settings-header.php:474
+msgid "— Select a Menu —"
+msgstr "একটি মেনু বাছাই করুন"
+
+#: includes/settings/settings-footer.php:360
+#: includes/settings/settings-footer.php:417
+#: includes/settings/settings-footer.php:504
+#: includes/settings/settings-footer.php:556
+#: includes/settings/settings-header.php:362
+#: includes/settings/settings-header.php:431
+#: includes/settings/settings-header.php:589
+msgid "Typography"
+msgstr "টাইপোগ্রাপি"
+
+#: includes/settings/settings-footer.php:344
+#: includes/settings/settings-footer.php:402
+#: includes/settings/settings-footer.php:541
+#: includes/settings/settings-header.php:346
+#: includes/settings/settings-header.php:416
+msgid "Text Color"
+msgstr "লেখার রঙ"
+
+#: includes/settings/settings-footer.php:313
+#: includes/settings/settings-header.php:315
+msgid "Logo Width"
+msgstr "লোগোর প্রস্থ"
+
+#: includes/settings/settings-footer.php:52
+#: includes/settings/settings-footer.php:288
+#: includes/settings/settings-header.php:53
+#: includes/settings/settings-header.php:283
+msgid "Site Logo"
+msgstr "সাইট লোগো"
+
+#: includes/settings/settings-footer.php:54
+#: includes/settings/settings-footer.php:66
+#: includes/settings/settings-footer.php:78
+#: includes/settings/settings-footer.php:90
+#: includes/settings/settings-header.php:55
+#: includes/settings/settings-header.php:66
+#: includes/settings/settings-header.php:77
+msgid "Show"
+msgstr "শো"
+
+#: includes/settings/settings-footer.php:55
+#: includes/settings/settings-footer.php:67
+#: includes/settings/settings-footer.php:79
+#: includes/settings/settings-footer.php:91
+#: includes/settings/settings-header.php:56
+#: includes/settings/settings-header.php:67
+#: includes/settings/settings-header.php:78
+msgid "Hide"
+msgstr "লুকিয়ে ফেলুন"
+
+#: includes/admin-functions.php:132
+msgid "Get Elementor"
+msgstr "এলিমেন্টর পান"
+
+#: includes/settings/settings-footer.php:463
+#: includes/settings/settings-header.php:484
+msgid "There are no menus in your site."
+msgstr "আপনার সাইটে কোন মেনু নেই"
+
+#. translators: %s: Link that opens Elementor's "Site Identity" panel.
+#: includes/settings/settings-footer.php:316
+#: includes/settings/settings-header.php:318
+msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's logo"
+msgstr "আপনার সাইটের লোগো ব্যবস্থাপনা করতে <a href=\"%s\">সাইট আইডেন্টিটি</a> এ যান৷"
+
+#: includes/settings/settings-footer.php:64
+#: includes/settings/settings-footer.php:392
+#: includes/settings/settings-header.php:64
+#: includes/settings/settings-header.php:399
+msgid "Tagline"
+msgstr "সংক্ষিপ্ত বর্ণনা"
+
+#. translators: %s: Link that opens Elementor's "Site Identity" panel.
+#: includes/settings/settings-footer.php:431
+#: includes/settings/settings-header.php:445
+msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's tagline"
+msgstr "আপনার সাইটের টাইটেল এবং সংক্ষিপ্ত বর্ণনা ব্যবস্থাপনা করতে <a href=\"%s\">সাইট আইডেন্টিটি</a> এ যান"
+
+#: includes/settings/settings-footer.php:463
+#: includes/settings/settings-header.php:484
+msgid "Go to <a href=\"%s\" target=\"_blank\">Menus screen</a> to create one."
+msgstr "একটি তৈরি করতে <a href=\"%s\" target=\"_blank\">মেনু স্ক্রীনে</a> যান৷"
+
+#: includes/settings/settings-footer.php:476
+#: includes/settings/settings-header.php:497
+msgid "Go to the <a href=\"%s\" target=\"_blank\">Menus screen</a> to manage your menus."
+msgstr "আপনার মেনু পরিচালনা করতে <a href=\"%s\" target=\"_blank\">Menu screen</a> যান"
+
+#: includes/settings/settings-footer.php:484
+#: includes/settings/settings-header.php:505
+msgid "Changes will be reflected in the preview only after the page reloads."
+msgstr "পৃষ্ঠাটি পুনরায় লোড হওয়ার পরেই পরিবর্তনগুলি প্রিভিউতে প্রতিফলিত হবে।"
+
+#: includes/settings/settings-header.php:625
+msgid "Create a custom header with multiple options"
+msgstr "একাধিক বিকল্পসহ একটি কাস্টম হেডার তৈরি করুন"
+
+#: includes/settings/settings-header.php:541
+msgid "None"
+msgstr "কোনোটিই নয়"
+
+#: includes/settings/settings-header.php:574
+msgid "Toggle Color"
+msgstr "রঙ টগল করুন"
+
+#: includes/admin-functions.php:135
+msgid "Thanks for installing the Hello Theme!"
+msgstr "হ্যালো থিম ইনস্টল করার জন্য ধন্যবাদ!"
+
+#: includes/admin-functions.php:51
+#: includes/customizer/customizer-action-links.php:58
+#: includes/customizer/customizer-action-links.php:60
+#: assets/js/hello-admin.js:173 assets/js/hello-admin.js:175
+msgid "Install Elementor"
+msgstr "এলিমেন্টর ইনস্টল করুন"
+
+#: includes/admin-functions.php:42
+#: includes/customizer/customizer-action-links.php:77
+#: includes/customizer/customizer-action-links.php:79
+#: assets/js/hello-admin.js:181 assets/js/hello-admin.js:183
+msgid "Activate Elementor"
+msgstr "এলিমেন্টর সক্রিয় করুন"
+
+#: comments.php:32
+msgctxt "comments title"
+msgid "One Response"
+msgstr "একটি রেসপন্স"
+
+#: template-parts/search.php:17
+msgid "Search results for: "
+msgstr "অনুসন্ধানের ফলাফল যার জন্য :"
+
+#: template-parts/dynamic-footer.php:34 template-parts/dynamic-header.php:40
+#: template-parts/header.php:30
+msgid "Home"
+msgstr "মূলপাতা"
+
+#: template-parts/single.php:31
+msgid "Tagged "
+msgstr "ট্যাগড"
+
+#: template-parts/404.php:16
+msgid "The page can&rsquo;t be found."
+msgstr "পাতাটি পাওয়া যায় নি।"
+
+#: template-parts/404.php:21
+msgid "It looks like nothing was found at this location."
+msgstr "মনে হচ্ছে এখানে কিছুই পাওয়া যায় নি।"
+
+#: template-parts/search.php:43
+msgid "It seems we can't find what you're looking for."
+msgstr "মনে হচ্ছে আপনি যা খুঁজছেন তা আমরা খুঁজে পাচ্ছি না। "
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://elementor.com/?utm_source=wp-themes&utm_campaign=author-uri&utm_medium=wp-dash"
+msgstr "https://elementor.com/?utm_source=wp-themes&utm_campaign=author-uri&utm_medium=wp-dash"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://elementor.com/hello-theme/?utm_source=wp-themes&utm_campaign=theme-uri&utm_medium=wp-dash"
+msgstr "https://elementor.com/hello-theme/?utm_source=wp-themes&utm_campaign=theme-uri&utm_medium=wp-dash"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "Elementor Team"
+msgstr "এলিমেন্টর টিম"
