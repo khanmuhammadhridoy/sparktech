@@ -1,10 +1,12 @@
 <?php
-// Check if Elementor is active and content exists
 if (class_exists('Elementor\Plugin')) {
-    $elementor_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display(get_the_ID());
-    echo $elementor_content; ?>
-
-    <!-- hero area starts -->
+    // If Elementor is active, we allow the user to edit the content in the editor
+    echo '<div class="hero-area">';
+    the_content(); // This will display the content added through Elementor
+    echo '</div>';
+} else {
+    // Fallback content
+    ?>
     <section class="hero-area">
         <div class="hero-bg dark-version"
             style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/hero-bg.png'); ?>')">
@@ -31,11 +33,15 @@ if (class_exists('Elementor\Plugin')) {
                     </div>
                     <div class="col-lg-7">
                         <h1 class="title_one">Amplifying Impact!</h1>
-                        <p class="mt-20">We are a passionate collective of creatives, designers, and strategists
-                            dedicated to shaping remarkable brand experiences.</p>
+                        <p class="mt-20">We are a passionate collective of creatives, designers, and strategists dedicated
+                            to shaping remarkable brand experiences.</p>
                         <div class="btn-group">
-                            <img class="dark-version" src="assets/images/vector-arrow.png" alt="vector-arrow">
-                            <img class="light-version" src="assets/images/vector-dark-arrow.png" alt="vector-arrow">
+                            <img class="dark-version"
+                                src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/vector-arrow.png'); ?>"
+                                alt="vector-arrow">
+                            <img class="light-version"
+                                src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/vector-dark-arrow.png'); ?>"
+                                alt="vector-arrow">
                             <a href="about.html" class="secondary-btn">Learn More</a>
                         </div>
                     </div>
@@ -53,15 +59,6 @@ if (class_exists('Elementor\Plugin')) {
             </div>
         </div>
     </section>
-
-
-
-
-
-    <?php
-} else {
-    // Fallback to static content if no Elementor content is found
-    ?>
-
     <?php
 }
+?>

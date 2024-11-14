@@ -15,8 +15,11 @@ if (have_posts()):
 endif;
 ?>
 
-<?php get_template_part('hero',''); ?>
+<div id="scrollsmoother-container">
 
-<h1>outsite</h1>
+    <!-- <?php get_template_part('hero'); ?> -->
+    <?php get_template_part('heros'); ?>
+
+</div>
 
 <?php get_footer(); ?>

@@ -1,152 +1,16 @@
 <?php
 
-// Enable support for the document title tag
-add_theme_support('title-tag');
+//default theme function
+include_once("inc/default.php");
 
-function sparktech_enqueue_styles()
-{
-    // Register stylesheet
-    wp_register_style('animate', get_template_directory_uri() . '/assets/css/animate.css');
-    wp_register_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css');
-    wp_register_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css');
-    wp_register_style('remixicon', get_template_directory_uri() . '/assets/fonts/remixicon.css');
-    wp_register_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css');
-    wp_register_style('meanmenu', get_template_directory_uri() . '/assets/css/meanmenu.css');
-    wp_register_style('slick', get_template_directory_uri() . '/assets/css/slick.css');
-    wp_register_style('sparktech_custom_style', get_template_directory_uri() . '/assets/css/style.css');
+//theme function css and js enqueue
+include_once("inc/enqueue.php");
 
-    // Enqueue the stylesheets
-    wp_enqueue_style('animate');
-    wp_enqueue_style('bootstrap');
-    wp_enqueue_style('font-awesome');
-    wp_enqueue_style('remixicon');
-    wp_enqueue_style('magnific-popup');
-    wp_enqueue_style('meanmenu');
-    wp_enqueue_style('slick');
-    wp_enqueue_style('sparktech_custom_style');
+//theme function
+include_once("inc/theme_function.php");
 
-    // Enqueue the main stylesheet for the theme
-    wp_enqueue_style('sparktech_global_style', get_stylesheet_uri());
+//menu reg
+include_once("inc/menu_reg.php");
 
-    // Check if Elementor is active and global settings are available
-    if (class_exists('Elementor\Plugin') && $global_settings = get_option('elementor_global_settings')) {
-        // Retrieve global colors and fonts from Elementor settings, if available
-        $global_colors = $global_settings['global_colors'] ?? [];
-        $global_fonts = $global_settings['global_fonts'] ?? [];
-
-        // Start custom CSS variable declarations within the :root selector
-        $custom_css = ':root {';
-
-        // Loop through global add CSS variables
-        foreach ($global_colors as $color_name => $color_value) {
-            $custom_css .= "--{$color_name}: {$color_value};";
-        }
-        foreach ($global_fonts as $font_name => $font_value) {
-            $custom_css .= "--{$font_name}: {$font_value};";
-        }
-
-        // Close the CSS block
-        $custom_css .= '}';
-
-        // Add the custom CSS inline with the main stylesheet
-        wp_add_inline_style('sparktech_global_style', $custom_css);
-    }
-
-
-    // Enqueue the main stylesheet (style.css in the theme root folder)
-    wp_enqueue_style('sparktech-style', get_stylesheet_uri());
-}
-add_action('wp_enqueue_scripts', 'sparktech_enqueue_styles');
-
-function sparktech_enqueue_js()
-{
-    // Register JavaScript
-    wp_register_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', ['jquery-2.2.4'], '5.0.2', true);
-    wp_register_script('counterup', get_template_directory_uri() . '/assets/js/counterup.min.js', ['jquery-2.2.4'], '1.0', true);
-    wp_register_script('easing', get_template_directory_uri() . '/assets/js/easing.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('font-awesome', get_template_directory_uri() . '/assets/js/font-awesome.js', [], '6.5.2', true);
-    wp_register_script('gsap', get_template_directory_uri() . '/assets/js/gsap.min.js', [], null, true);
-    wp_register_script('gsap-animation', get_template_directory_uri() . '/assets/js/gsapAnimation.js', ['gsap'], null, true);
-    wp_register_script('magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('meanmenu', get_template_directory_uri() . '/assets/js/meanmenu.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('mousemove', get_template_directory_uri() . '/assets/js/mousemove.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('scroll-smoother', get_template_directory_uri() . '/assets/js/ScrollSmoother.min.js', ['gsap'], null, true);
-    wp_register_script('scroll-trigger', get_template_directory_uri() . '/assets/js/ScrollTrigger.min.js', ['gsap'], null, true);
-    wp_register_script('slick', get_template_directory_uri() . '/assets/js/slick.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('split-text', get_template_directory_uri() . '/assets/js/SplitText.min.js', ['gsap'], null, true);
-    wp_register_script('waypoints', get_template_directory_uri() . '/assets/js/waypoints.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('jquery-2.2.4', get_template_directory_uri() . '/assets/js/jquery-2.2.4.min.js', [], null, true);
-    wp_register_script('main', get_template_directory_uri() . '/assets/js/main.js', ['jquery-2.2.4'], null, true);
-
-    // Enqueue the scripts
-    wp_enqueue_script('bootstrap');
-    wp_enqueue_script('counterup');
-    wp_enqueue_script('easing');
-    wp_enqueue_script('font-awesome');
-    wp_enqueue_script('gsap');
-    wp_enqueue_script('gsap-animation');
-    wp_enqueue_script('magnific-popup');
-    wp_enqueue_script('meanmenu');
-    wp_enqueue_script('mousemove');
-    wp_enqueue_script('scroll-smoother');
-    wp_enqueue_script('scroll-trigger');
-    wp_enqueue_script('slick');
-    wp_enqueue_script('split-text');
-    wp_enqueue_script('waypoints');
-    wp_enqueue_script('jquery-2.2.4');
-    wp_enqueue_script('main');
-}
-add_action('wp_enqueue_scripts', 'sparktech_enqueue_js');
-
-// Theme Function
-// Register Customizer Options for Logo Upload
-function sparktech_customize_register($wp_customize)
-{
-    // Add a section for the header area in the Customizer
-    $wp_customize->add_section('sparktech_header_area', [
-        'title' => __('Header Area', 'sparktech'),
-        'description' => 'Customize The Header Here',
-    ]);
-
-    // Add a setting for the custom logo
-    $wp_customize->add_setting('sparktech_logo', [
-        'default' => get_template_directory_uri() . '/assets/images/logo.png', // Default logo URL
-    ]);
-
-    // Add a control for the logo upload using the image control
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'sparktech_logo', [
-        'label' => __('Logo Upload', 'sparktech'),
-        'settings' => 'sparktech_logo',
-        'section' => 'sparktech_header_area',
-    ]));
-}
-add_action('customize_register', 'sparktech_customize_register');
-
-// Function to register custom menu locations
-function sparktech_register_menus()
-{
-    register_nav_menus([
-        'primary-menu' => __('Primary Menu', 'sparktech'), // Assigns 'Primary Menu' as the label, with 'sparktech' as the text domain
-    ]);
-}
-add_action('init', 'sparktech_register_menus');
-
-
-// Render Elementor content on all pages
-function sparktech_render_elementor_content($content)
-{
-    if (is_page() && class_exists('Elementor\Plugin')) {
-        // Get Elementor content for the current page
-        $elementor_content = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display(get_the_ID());
-
-        // If Elementor content exists, return it; otherwise, return default content
-        if (!empty($elementor_content)) {
-            return $elementor_content;
-        }
-    }
-
-    // Return default content if no Elementor content is found
-    return $content;
-}
-
-add_filter('the_content', 'sparktech_render_elementor_content');
+//elementor add
+include_once("inc/elementor_add.php");
