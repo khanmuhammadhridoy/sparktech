@@ -1327,7 +1327,14 @@ span.font-variations-count {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
+<<<<<<< Updated upstream
   inset: 0;
+=======
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+>>>>>>> Stashed changes
   align-items: center;
   justify-content: center;
   z-index: 1030;
