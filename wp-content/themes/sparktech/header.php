@@ -17,13 +17,13 @@
 
 
 
-    <!-- <div id="preloader">
+    <div id="preloader">
         <div id="loader"></div>
     </div>
 
     <div class="procus-cursor"></div>
     <div class="procus-cursor2"></div>
-
+    <!--
     <div class="theme-color-switch">
         <input type="checkbox" class="checkbox" id="checkbox">
         <label for="checkbox" class="checkbox-label">
