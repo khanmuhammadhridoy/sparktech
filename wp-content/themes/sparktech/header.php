@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
     <!-- Stylesheets -->
+
     <?php wp_head(); ?>
 </head>
 
@@ -23,7 +25,7 @@
 
     <div class="sparktech-cursor"></div>
     <div class="sparktech-cursor2"></div>
-    <!--
+    <!-- 
     <div class="theme-color-switch">
         <input type="checkbox" class="checkbox" id="checkbox">
         <label for="checkbox" class="checkbox-label">
@@ -31,12 +33,12 @@
             <i class="fas fa-sun"></i>
             <span class="ball"></span>
         </label>
-    </div>
+    </div> -->
 
-    // back to top
+    <!-- back to top -->
     <div class="back-to-top">
         <span><i class="fa fa-angle-up"></i></span>
-    </div> -->
+    </div>
 
 
 
@@ -53,10 +55,17 @@
                                 the_custom_logo(); // Display custom logo
                             else:
                                 ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>"
-                                        alt="Logo">
+
+                                <a class="dark-version" href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
+                                        alt="logo">
                                 </a>
+
+                                <a class="light-version" href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-black.png"
+                                        alt="logo">
+                                </a>
+
                             <?php endif; ?>
                         </div>
                     </div>
@@ -86,5 +95,6 @@
                     </div>
                 </div>
             </div>
+            <div class="mobile-menu"></div>
         </div>
     </header>
