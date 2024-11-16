@@ -5,7 +5,7 @@ function sparktech_enqueue_styles()
     // Register stylesheet
     wp_register_style('animate', get_template_directory_uri() . '/assets/css/animate.css');
     wp_register_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css');
-    wp_register_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.css');
+    wp_register_style('font-awesome', src: get_template_directory_uri() . '/assets/css/font-awesome.css');
     wp_register_style('remixicon', get_template_directory_uri() . '/assets/fonts/remixicon.css');
     wp_register_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css');
     wp_register_style('meanmenu', get_template_directory_uri() . '/assets/css/meanmenu.css');

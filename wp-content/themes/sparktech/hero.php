@@ -39,37 +39,45 @@
                     </div>
                 </div>
             </div>
-            <ul class="hero-social">
-                <?php if ($facebook_link = get_theme_mod('hero_facebook_link', '#')): ?>
-                    <li><a href="<?php echo esc_url($facebook_link); ?>"><img
-                                src="<?php echo esc_url(get_theme_mod('hero_facebook_icon', get_template_directory_uri() . '/assets/images/facebook-icon.png')); ?>"
-                                alt="Facebook"></a></li>
-                <?php endif; ?>
 
-                <?php if ($twitter_link = get_theme_mod('hero_twitter_link', '#')): ?>
-                    <li><a href="<?php echo esc_url($twitter_link); ?>"><img
-                                src="<?php echo esc_url(get_theme_mod('hero_twitter_icon', get_template_directory_uri() . '/assets/images/twitter-icon.png')); ?>"
-                                alt="Twitter"></a></li>
-                <?php endif; ?>
 
-                <?php if ($linkedin_link = get_theme_mod('hero_linkedin_link', '#')): ?>
-                    <li><a href="<?php echo esc_url($linkedin_link); ?>"><img
-                                src="<?php echo esc_url(get_theme_mod('hero_linkedin_icon', get_template_directory_uri() . '/assets/images/linkedin-icon.png')); ?>"
-                                alt="LinkedIn"></a></li>
-                <?php endif; ?>
 
-                <?php if ($instagram_link = get_theme_mod('hero_instagram_link', '#')): ?>
-                    <li><a href="<?php echo esc_url($instagram_link); ?>"><img
-                                src="<?php echo esc_url(get_theme_mod('hero_instagram_icon', get_template_directory_uri() . '/assets/images/instagram-icon.png')); ?>"
-                                alt="Instagram"></a></li>
-                <?php endif; ?>
+            <?php
+            // Define social platforms
+            $social_media = [
+                'facebook' => 'Facebook',
+                'twitter' => 'Twitter',
+                'linkedin' => 'LinkedIn',
+                'instagram' => 'Instagram',
+                'youtube' => 'YouTube',
+            ];
 
-                <?php if ($youtube_link = get_theme_mod('hero_youtube_link', '#')): ?>
-                    <li><a href="<?php echo esc_url($youtube_link); ?>"><img
-                                src="<?php echo esc_url(get_theme_mod('hero_youtube_icon', get_template_directory_uri() . '/assets/images/youtube-icon.png')); ?>"
-                                alt="YouTube"></a></li>
-                <?php endif; ?>
-            </ul>
+            // Output social icons
+            echo '<ul class="hero-social">';
+            foreach ($social_media as $key => $label) {
+                $link = get_theme_mod("hero_{$key}_link", '#'); // Get the link
+                $icon_class = get_theme_mod("hero_{$key}_icon", "fa-brands fa-{$key}"); // Get the icon class
+            
+                // Only output if the link is not the default value
+                // if ($link && $link !== '#') {
+                echo sprintf(
+                    '<li><a href="%s" target="_blank" rel="noopener noreferrer"><i class="%s"></i> </a></li>',
+                    esc_url($link),
+                    esc_attr($icon_class),
+                    esc_html($label)
+                );
+            }
+            // }
+            echo '</ul>';
+            ?>
+
+
+
+            <a href="#counter-area"><img
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/vector-scroll-down.png"
+                    alt="vector-scroll-down" class="vector-scroll-down scroll-down"></a>
+
+
 
         </div>
     </div>
