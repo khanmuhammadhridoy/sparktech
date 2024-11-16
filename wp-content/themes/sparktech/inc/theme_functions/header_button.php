@@ -33,32 +33,32 @@ add_action('customize_register', 'sparktech_customize_header_button');
 
 
 
-// Add settings and controls to the Customizer
-add_action('customize_register', function ($wp_customize) {
-    $wp_customize->add_section('hero_section', [
-        'title' => __('Hero Button', 'sparktech'),
-        'description' => 'Customize the Hero Button Here',
-    ]);
+// // Add settings and controls to the Customizer
+// add_action('customize_register', function ($wp_customize) {
+//     $wp_customize->add_section('hero_section', [
+//         'title' => __('Hero Button', 'sparktech'),
+//         'description' => 'Customize the Hero Button Here',
+//     ]);
 
-    // Button Text Setting
-    $wp_customize->add_setting('hero_button_text', [
-        'default' => __('Learn More', 'sparktech'),
-        'sanitize_callback' => 'sanitize_text_field',
-    ]);
-    $wp_customize->add_control('hero_button_text', [
-        'label' => __('Button Text', 'sparktech'),
-        'section' => 'hero_button',
-        'type' => 'text',
-    ]);
+//     // Button Text Setting
+//     $wp_customize->add_setting('hero_button_text', [
+//         'default' => __('Learn More', 'sparktech'),
+//         'sanitize_callback' => 'sanitize_text_field',
+//     ]);
+//     $wp_customize->add_control('hero_button_text', [
+//         'label' => __('Button Text', 'sparktech'),
+//         'section' => 'hero_button',
+//         'type' => 'text',
+//     ]);
 
-    // Button URL Setting
-    $wp_customize->add_setting('hero_button_url', [
-        'default' => '#',
-        'sanitize_callback' => 'esc_url_raw',
-    ]);
-    $wp_customize->add_control('hero_button_url', [
-        'label' => __('Button URL', 'sparktech'),
-        'section' => 'sparktech_header_button',
-        'type' => 'url',
-    ]);
-});
+//     // Button URL Setting
+//     $wp_customize->add_setting('hero_button_url', [
+//         'default' => '#',
+//         'sanitize_callback' => 'esc_url_raw',
+//     ]);
+//     $wp_customize->add_control('hero_button_url', [
+//         'label' => __('Button URL', 'sparktech'),
+//         'section' => 'sparktech_header_button',
+//         'type' => 'url',
+//     ]);
+// });
