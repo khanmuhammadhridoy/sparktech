@@ -58,11 +58,23 @@ function sparktech_enqueue_js()
     wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap');
 
-    wp_enqueue_script('gsap');
-    wp_enqueue_script('scroll-trigger');
-    wp_enqueue_script('scroll-smoother');
-    wp_enqueue_script('split-text');
-    wp_enqueue_script('gsap-animation');
+    // wp_enqueue_script('gsap');
+    // wp_enqueue_script('scroll-trigger');
+    // wp_enqueue_script('scroll-smoother');
+    // wp_enqueue_script('split-text');
+    // wp_enqueue_script('gsap-animation');
+
+    // The proper way to enqueue GSAP script in WordPress
+
+    // wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
+    // The core GSAP library
+    wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array(), false, true);
+    // ScrollTrigger - with gsap.js passed as a dependency
+    wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
+    // Your animation code file - with gsap.js passed as a dependency
+    wp_enqueue_script('gsap-js2', get_template_directory_uri() . 'js/app.js', array('gsap-js'), false, true);
+
+
 
     wp_enqueue_script('font-awesome');
     wp_enqueue_script('counterup');
