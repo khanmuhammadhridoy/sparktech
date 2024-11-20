@@ -34,27 +34,28 @@ add_action('wp_enqueue_scripts', 'sparktech_enqueue_styles');
 function sparktech_enqueue_js()
 {
     // Register JavaScript
-    wp_register_script('jquery-2.2.4', get_template_directory_uri() . '/assets/js/jquery-2.2.4.min.js', [], null, true);
-    wp_register_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', ['jquery-2.2.4'], '5.0.2', true);
+    // wp_register_script('jquery-2.2.4', get_template_directory_uri() . '/assets/js/jquery-2.2.4.min.js', [], null, true);
+    wp_register_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [], '5.0.2', true);
 
     wp_register_script('gsap', get_template_directory_uri() . '/assets/js/gsap.min.js', [], null, true);
     wp_register_script('scroll-trigger', get_template_directory_uri() . '/assets/js/ScrollTrigger.min.js', ['gsap'], null, true);
     wp_register_script('scroll-smoother', get_template_directory_uri() . '/assets/js/ScrollSmoother.min.js', ['gsap'], null, true);
     wp_register_script('split-text', get_template_directory_uri() . '/assets/js/SplitText.min.js', ['gsap'], null, true);
     wp_register_script('gsap-animation', get_template_directory_uri() . '/assets/js/gsapAnimation.js', ['gsap'], null, true);
-    
+
     wp_register_script('font-awesome', get_template_directory_uri() . '/assets/js/font-awesome.js', [], '6.5.2', true);
-    wp_register_script('counterup', get_template_directory_uri() . '/assets/js/counterup.min.js', ['jquery-2.2.4'], '1.0', true);
-    wp_register_script('magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('mousemove', get_template_directory_uri() . '/assets/js/mousemove.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('meanmenu', get_template_directory_uri() . '/assets/js/meanmenu.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('slick', get_template_directory_uri() . '/assets/js/slick.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('easing', get_template_directory_uri() . '/assets/js/easing.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('waypoints', get_template_directory_uri() . '/assets/js/waypoints.min.js', ['jquery-2.2.4'], null, true);
-    wp_register_script('main', get_template_directory_uri() . '/assets/js/main.js', ['jquery-2.2.4'], null, true);
+    wp_register_script('counterup', get_template_directory_uri() . '/assets/js/counterup.min.js', [], '1.0', true);
+    wp_register_script('magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', [], null, true);
+    wp_register_script('mousemove', get_template_directory_uri() . '/assets/js/mousemove.js', [], null, true);
+    wp_register_script('meanmenu', get_template_directory_uri() . '/assets/js/meanmenu.min.js', [], null, true);
+    wp_register_script('slick', get_template_directory_uri() . '/assets/js/slick.min.js', [], null, true);
+    wp_register_script('easing', get_template_directory_uri() . '/assets/js/easing.min.js', [], null, true);
+    wp_register_script('waypoints', get_template_directory_uri() . '/assets/js/waypoints.min.js', [], null, true);
+    wp_register_script('main', get_template_directory_uri() . '/assets/js/main.js', [], null, true);
 
     // Enqueue the scripts
-    wp_enqueue_script('jquery-2.2.4');
+    // wp_enqueue_script('jquery-2.2.4');
+    wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap');
 
     wp_enqueue_script('gsap');
