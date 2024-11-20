@@ -36,7 +36,12 @@ function sparktech_enqueue_js() {
     wp_enqueue_script('jquery');
 
     // Register JavaScript
+<<<<<<< HEAD
     wp_register_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', ['jquery'], '5.0.2', true);
+=======
+    // wp_register_script('jquery-2.2.4', get_template_directory_uri() . '/assets/js/jquery-2.2.4.min.js', [], null, true);
+    wp_register_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [], '5.0.2', true);
+>>>>>>> hridoy
 
     wp_register_script('gsap', get_template_directory_uri() . '/assets/js/gsap.min.js', [], null, true);
     wp_register_script('scroll-trigger', get_template_directory_uri() . '/assets/js/ScrollTrigger.min.js', ['gsap'], null, true);
@@ -45,6 +50,7 @@ function sparktech_enqueue_js() {
     wp_register_script('gsap-animation', get_template_directory_uri() . '/assets/js/gsapAnimation.js', ['gsap'], null, true);
 
     wp_register_script('font-awesome', get_template_directory_uri() . '/assets/js/font-awesome.js', [], '6.5.2', true);
+<<<<<<< HEAD
     wp_register_script('counterup', get_template_directory_uri() . '/assets/js/counterup.min.js', ['jquery'], '1.0', true);
     wp_register_script('magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', ['jquery'], null, true);
     wp_register_script('mousemove', get_template_directory_uri() . '/assets/js/mousemove.js', ['jquery'], null, true);
@@ -62,6 +68,39 @@ function sparktech_enqueue_js() {
     wp_enqueue_script('scroll-smoother');
     wp_enqueue_script('split-text');
     wp_enqueue_script('gsap-animation');
+=======
+    wp_register_script('counterup', get_template_directory_uri() . '/assets/js/counterup.min.js', [], '1.0', true);
+    wp_register_script('magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', [], null, true);
+    wp_register_script('mousemove', get_template_directory_uri() . '/assets/js/mousemove.js', [], null, true);
+    wp_register_script('meanmenu', get_template_directory_uri() . '/assets/js/meanmenu.min.js', [], null, true);
+    wp_register_script('slick', get_template_directory_uri() . '/assets/js/slick.min.js', [], null, true);
+    wp_register_script('easing', get_template_directory_uri() . '/assets/js/easing.min.js', [], null, true);
+    wp_register_script('waypoints', get_template_directory_uri() . '/assets/js/waypoints.min.js', [], null, true);
+    wp_register_script('main', get_template_directory_uri() . '/assets/js/main.js', [], null, true);
+
+    // Enqueue the scripts
+    // wp_enqueue_script('jquery-2.2.4');
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('bootstrap');
+
+    // wp_enqueue_script('gsap');
+    // wp_enqueue_script('scroll-trigger');
+    // wp_enqueue_script('scroll-smoother');
+    // wp_enqueue_script('split-text');
+    // wp_enqueue_script('gsap-animation');
+
+    // The proper way to enqueue GSAP script in WordPress
+
+    // wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
+    // The core GSAP library
+    wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array(), false, true);
+    // ScrollTrigger - with gsap.js passed as a dependency
+    wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
+    // Your animation code file - with gsap.js passed as a dependency
+    wp_enqueue_script('gsap-js2', get_template_directory_uri() . 'js/app.js', array('gsap-js'), false, true);
+
+
+>>>>>>> hridoy
 
     wp_enqueue_script('font-awesome');
     wp_enqueue_script('counterup');
