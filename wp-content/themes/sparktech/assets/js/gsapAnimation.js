@@ -35,9 +35,13 @@ titleOnes.forEach((titleOne) => {
 });
 
 const smoother = ScrollSmoother.create({
+  // wrapper: "#scrollsmoother-container",
   content: "#scrollsmoother-container",
   smooth: 1.3,
   normalizeScroll: true,
   ignoreMobileResize: true,
   effects: true,
+//   onUpdate: () => {
+//     ScrollTrigger.refresh(); // Refresh triggers during scroll updates
+// },
 });
