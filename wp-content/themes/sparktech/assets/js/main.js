@@ -1,6 +1,5 @@
 (function ($) {
   "use strict";
-
   $(document).ready(function () {
     // Mobile menu
     $("#mobile-menu").meanmenu({
@@ -9,7 +8,7 @@
       onePage: false,
     });
 
-    // Theme switch
+    // Color switch
     const checkbox = document.getElementById("checkbox");
     if (checkbox) {
       checkbox.addEventListener("change", () => {
@@ -18,173 +17,455 @@
     }
 
     // Counter up
-    if ($.fn.counterUp) {
+    if ($(".counter").length) {
       $(".counter").counterUp({
         delay: 10,
         time: 1500,
       });
     }
-
-    // Accordion
-    const accordionList = $(".accordion-list > li");
-    accordionList
-      .filter(":nth-child(2)")
+    // accordion
+    $(".accordion-list > li:nth-child(2)")
       .addClass("active")
       .find(".answer")
       .show();
-    accordionList.not(":nth-child(2)").find(".answer").hide();
+    $(".accordion-list > li:not(:nth-child(2)) .answer").hide();
 
-    accordionList.on("click", function () {
-      const isActive = $(this).hasClass("active");
-      accordionList.removeClass("active").find(".answer").slideUp();
-      if (!isActive) {
+    $(".accordion-list > li").click(function () {
+      if ($(this).hasClass("active")) {
+        $(this).removeClass("active").find(".answer").slideUp();
+      } else {
+        $(".accordion-list > li.active .answer").slideUp();
+        $(".accordion-list > li.active").removeClass("active");
         $(this).addClass("active").find(".answer").slideDown();
       }
     });
 
-    // Service details tab
+    // service details tab
     $(".tab-link").on("click", function (event) {
-      event.preventDefault();
-      const tabId = $(this).data("tab");
+      event.preventDefault(); // Prevent the default action of the <a> tag
+
+      var tab_id = $(this).attr("data-tab");
 
       $(".tab-link").removeClass("active");
       $(".tab-content").removeClass("active");
 
       $(this).addClass("active");
-      $(`#${tabId}`).addClass("active");
+      $("#" + tab_id).addClass("active");
     });
 
-    // Initialize sliders
-    initializeSliders();
-
-    // Popup gallery
-    if ($.fn.magnificPopup) {
-      $(".popup-gallery").magnificPopup({
-        delegate: ".popup-img",
-        type: "image",
-        gallery: {
-          enabled: true,
+    // portfolio slider
+    $(".portfolio-slider").slick({
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
         },
-      });
-
-      $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
-        type: "iframe",
-        mainClass: "mfp-fade",
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-      });
-    }
-
-    // Navbar toggle
-    const navBar = $(".nav-bar");
-    navBar.on("click", function () {
-      $(".main-menu, .nav-bar").toggleClass("active");
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     });
 
-    // Service item hover effect
-    handleHoverEffect(".single-service-2", 4);
-
-    // Case filter
-    initializeCaseFilter();
-
-    // Pricing toggle
-    handlePricingToggle();
-
-    // Mouseover effects
-    handleHoverEffect(".single-choose-item");
-    handleHoverEffect(".contact-info-area .single-info");
-
-    // Tab functionality
-    initializeTabFunctionality();
-
-    // Accordion functionality
-    initializeAccordion();
-  });
-
-  $(window).on("scroll", function () {
-    const ScrollTop = $(".back-to-top");
-
-    // Back to top visibility
-    if ($(this).scrollTop() > 1000) {
-      ScrollTop.fadeIn(1000);
-    } else {
-      ScrollTop.fadeOut(1000);
-    }
-
-    // Navbar fixed position
-    const headerHeight = $(".header-area").outerHeight();
-    $(".menu-area").toggleClass(
-      "fixed-top",
-      $(this).scrollTop() > headerHeight
-    );
-  });
-
-  $(window).on("load", function () {
-    // Preloader
-    $("#preloader").fadeOut(0);
-
-    // Back to top animation
-    $(".back-to-top").on("click", function () {
-      $("html").animate({ scrollTop: 0 }, 1000);
+    // brand slider
+    $(".brand-slider").slick({
+      dots: false,
+      infinite: true,
+      speed: 3000,
+      autoplay: true,
+      autoplaySpeed: 0,
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      cssEase: "linear",
+      arrows: false,
+      centerMode: true,
+      variableWidth: true,
     });
-  });
 
-  // Helper functions
-  function initializeSliders() {
-    if ($.fn.slick) {
-      const sliderSettings = {
-        autoplay: true,
-        autoplaySpeed: 2000,
-        speed: 1000,
-        infinite: true,
-        arrows: false,
-      };
+    // testimonial slider
+    $(".testimonial-slider").slick({
+      dots: false,
+      arrows: true,
+      prevArrow:
+        '<span class="arrow-up"><i class="fa-solid fa-angle-up"></i></span>',
+      nextArrow:
+        '<span class="arrow-down"><i class="fa-solid fa-angle-down"></i></span>',
+      infinite: true,
+      speed: 1000,
+      fade: true,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            dots: false,
+            arrows: false,
+          },
+        },
+      ],
+    });
 
-      $(".portfolio-slider").slick({
-        ...sliderSettings,
-        slidesToShow: 2,
-        responsive: [
-          { breakpoint: 992, settings: { slidesToShow: 1 } },
-          { breakpoint: 768, settings: { slidesToShow: 1 } },
-        ],
-      });
+    // blog slider
+    $(".blog-slider").slick({
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            dots: false,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
 
-      $(".testimonial-slider").slick({
-        ...sliderSettings,
-        arrows: true,
-        fade: true,
-        slidesToShow: 1,
-        prevArrow:
-          '<span class="arrow-up"><i class="fa-solid fa-angle-up"></i></span>',
-        nextArrow:
-          '<span class="arrow-down"><i class="fa-solid fa-angle-down"></i></span>',
-        responsive: [{ breakpoint: 992, settings: { arrows: false } }],
-      });
+    // magnific popup init
+    $(".popup-gallery").magnificPopup({
+      delegate: ".popup-img",
+      type: "image",
+      gallery: {
+        enabled: true,
+      },
+    });
 
-      // Additional sliders can be initialized similarly...
-    }
-  }
+    $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
+      type: "iframe",
+      mainClass: "mfp-fade",
+      removalDelay: 160,
+      preloader: false,
+      fixedContentPos: false,
+    });
 
-  function initializeCaseFilter() {
-    const caseItems = $(".case-items .case-single");
-    $(".case-filter-tab li").on("click", function () {
-      const filter = $(this).data("filter");
+    // navbar home 02
+    $(".nav-bar").on("click", function () {
+      $(".main-menu").toggleClass("active");
+    });
+    $(".nav-bar").on("click", function () {
+      $(".nav-bar").toggleClass("active");
+    });
 
-      $(this).addClass("active").siblings().removeClass("active");
+    // service item 02
+    $(".single-service-2").hover(function () {
+      $(".single-service-2").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    $(".single-service-2:nth-child(4)").addClass("active");
+
+    // portfolio slider 02
+    $(".portfolio-slider-2").slick({
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow:
+        '<span class="arrow-left"><i class="fas fa-arrow-left"></i></span>',
+      nextArrow:
+        '<span class="arrow-right"><i class="fas fa-arrow-right"></i></span>',
+      centerMode: true,
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: false,
+          },
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            centerMode: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+          },
+        },
+      ],
+    });
+
+    // case filter tab
+    var $caseItems = $(".case-items .case-single");
+    var $filterTabs = $(".case-filter-tab li");
+
+    $filterTabs.on("click", function () {
+      var $this = $(this); // Cache the current 'li' element
+      var filter = $this.attr("data-filter");
+
+      $this.addClass("active").siblings().removeClass("active");
+
       if (filter === "all") {
-        caseItems.fadeIn().removeClass("item-hidden");
+        $caseItems.fadeIn().removeClass("item-hidden");
       } else {
-        caseItems.each(function () {
-          $(this)
-            .toggleClass("item-hidden", !$(this).hasClass(filter))
-            .fadeToggle();
+        $caseItems.each(function () {
+          var $caseItem = $(this); // Cache the current case item
+          if ($caseItem.hasClass(filter)) {
+            $caseItem.fadeIn().removeClass("item-hidden");
+          } else {
+            $caseItem.fadeOut().addClass("item-hidden");
+          }
         });
       }
     });
-  }
 
-  function handlePricingToggle() {
+    // testimonial slider 02
+    $(".testimonial-slider-2").slick({
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+
+    // blog slider 02
+    $(".blog-slider-2").slick({
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+
+    // brand slider 03
+    $(".brand-slider-3").slick({
+      dots: false,
+      infinite: true,
+      speed: 3000,
+      autoplay: true,
+      autoplaySpeed: 0,
+      slidesToShow: 8,
+      slidesToScroll: 1,
+      cssEase: "linear",
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1400,
+          settings: {
+            slidesToShow: 6,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+
+    // service tab 03
+    $(".tab-menu-item").on("click", function () {
+      var tabId = $(this).data("tab");
+
+      // Remove active class from all tabs and content items
+      $(".tab-menu-item").removeClass("active");
+      $(".tab-content-item").removeClass("active").hide(); // Hide all content items
+
+      // Add active class to the clicked tab
+      $(this).addClass("active");
+
+      // Animate the corresponding content item with fade-in-up effect
+      $("#" + tabId)
+        .addClass("active")
+        .css({
+          display: "block",
+          opacity: 0,
+          top: "20px",
+        })
+        .animate(
+          {
+            opacity: 1,
+            top: "0",
+          },
+          1200
+        ); // 500ms for the effect duration
+    });
+
+    // testimonial slider 03
+    $(".testimonial-slider-home-3").slick({
+      dots: false,
+      infinite: true,
+      speed: 10000,
+      autoplay: true,
+      autoplaySpeed: 0,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      cssEase: "linear",
+      arrows: false,
+      centerMode: true,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: false,
+            speed: 5000,
+          },
+        },
+      ],
+    });
+
+    $(".testimonial-slider-2-home-3").slick({
+      dots: false,
+      infinite: true,
+      speed: 8000,
+      autoplay: true,
+      autoplaySpeed: 0,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      cssEase: "linear",
+      arrows: false,
+      centerMode: true,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: false,
+            speed: 4000,
+          },
+        },
+      ],
+    });
+
+    // pricing toggle
     $(".monthly-plans").show();
     $(".yearly-plans").hide();
 
@@ -192,69 +473,163 @@
       $(".pricing-toggle-btn").removeClass("active");
       $(this).addClass("active");
 
-      const pricingType = $(this).data("pricing");
+      var pricingType = $(this).data("pricing");
       if (pricingType === "monthly") {
         $(".monthly-plans").show();
         $(".yearly-plans").hide();
-      } else {
+      } else if (pricingType === "yearly") {
         $(".monthly-plans").hide();
         $(".yearly-plans").show();
       }
     });
-  }
 
-  function handleHoverEffect(selector, activeIndex) {
-    const items = $(selector);
-    items.on("mouseover", function () {
-      items.removeClass("active");
+    // mouseover
+    var singleChoose = $(".single-choose-item");
+    singleChoose.mouseover(function () {
+      singleChoose.removeClass("active");
       $(this).addClass("active");
     });
-    if (activeIndex) items.eq(activeIndex - 1).addClass("active");
-  }
 
-  function initializeTabFunctionality() {
+    var singleInfo = $(".contact-info-area .single-info");
+    singleInfo.mouseover(function () {
+      singleInfo.removeClass("active");
+      $(this).addClass("active");
+    });
+
+    // working process slider
+    $(".working-process-slider").slick({
+      dots: true,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: false,
+      vertical: true,
+      verticalSwiping: true,
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+
+    // process slider 2
+    $(".process-slider-2").slick({
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow:
+        '<span class="arrow-left"><i class="fa-solid fa-angle-left"></i></span>',
+      nextArrow:
+        '<span class="arrow-right"><i class="fa-solid fa-angle-right"></i></span>',
+      responsive: [
+        {
+          breakpoint: 1400,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: false,
+          },
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: false,
+          },
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+          },
+        },
+      ],
+    });
+
+    // Tab functionality
     $(".tab-menu-item").on("click", function () {
-      const tabId = $(this).data("tab");
+      var tabId = $(this).data("tab");
+
+      // Remove active class from all tab-menu-item and tab-content-item
       $(".tab-menu-item").removeClass("active");
-      $(".tab-content-item").removeClass("active").hide();
+      $(".tab-content-item").removeClass("active");
 
+      // Add active class to the clicked tab-menu-item and corresponding tab-content-item
       $(this).addClass("active");
-      $(`#${tabId}`).addClass("active").fadeIn();
+      $("#" + tabId).addClass("active");
     });
-  }
 
-  function initializeAccordion() {
+    // Accordion functionality
     $(".accordion-header").on("click", function () {
+      // Remove active class from all accordion-header and accordion-content
       $(".accordion-header").removeClass("active");
-      $(".accordion-content").slideUp();
+      $(".accordion-content").removeClass("active");
 
+      // Add active class to the clicked accordion-header and corresponding accordion-content
       $(this).addClass("active");
-      $(this).next(".accordion-content").slideDown();
+      $(this).next(".accordion-content").addClass("active");
     });
 
+    // Ensure one accordion item is active initially
     $(".accordion-item:first-child .accordion-header").addClass("active");
-    $(".accordion-item:first-child .accordion-content").slideDown();
-  }
+    $(".accordion-item:first-child .accordion-content").addClass("active");
+  });
+
+  $(window).on("scroll", function () {
+    // back to top scroll
+    var ScrollTop = $(".back-to-top");
+
+    if ($(window).scrollTop() > 1000) {
+      ScrollTop.fadeIn(1000);
+    } else {
+      ScrollTop.fadeOut(1000);
+    }
+
+    // navbar fixed
+    const headerHeight = $(".header-area").outerHeight();
+    if ($(this).scrollTop() > headerHeight) {
+      $(".menu-area").addClass("fixed-top");
+    } else {
+      $(".menu-area").removeClass("fixed-top");
+    }
+  });
+
+  $(window).on("load", function () {
+    // preloader
+    var preLoder = $("#preloader");
+    preLoder.fadeOut(0);
+
+    // back to top animate
+    $(".back-to-top").on("click", function () {
+      $("html").animate(
+        {
+          scrollTop: "0",
+        },
+        1000
+      );
+    });
+  });
 })(jQuery);
-
-// wait until DOM is ready
-document.addEventListener("DOMContentLoaded", function (event) {
-  console.log("DOM loaded");
-
-  //wait until images, links, fonts, stylesheets, and js is loaded
-  window.addEventListener(
-    "load",
-    function (e) {
-      //custom GSAP code goes here
-      // This tween will rotate an element with a class of .my-element
-      gsap.to(".my-element", {
-        rotation: 360,
-        duration: 2,
-        ease: "bounce.out",
-      });
-
-      console.log("window loaded");
-    },
-    false
-  );
-});
